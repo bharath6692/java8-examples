@@ -60,25 +60,25 @@ class LinkedListExample
 	 * @param head
 	 */
 	void removeDuplicates(Node head)
-    {
+	{
 		Node current = head;
-        Node next_next;
-        if (head!=null && head.next == null)    {
-        	this.head = null;
-        	return;
-        }
-            
-        while (current.next != null) {
- 
-            if (current.data == current.next.data) {
-                next_next = current.next.next;
-                current.next = null;
-                current.next = next_next;
-            }
-            else // advance if no deletion
-               current = current.next;
-        }
-    }
+		Node next_next;
+		if (head!=null && head.next == null)    {
+			this.head = null;
+			return;
+		}
+
+		while (current.next != null) {
+
+			if (current.data == current.next.data) {
+				next_next = current.next.next;
+				current.next = null;
+				current.next = next_next;
+			}
+			else // advance if no deletion
+			current = current.next;
+		}
+	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
