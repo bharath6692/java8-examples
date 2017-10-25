@@ -1,5 +1,8 @@
 package com.bharath.datastructure.examples;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 // A simple Java program for traversal of a linked list
 class LinkedListExample
 {
@@ -22,6 +25,7 @@ class LinkedListExample
 			System.out.print(n.data+" ");
 			n = n.next;
 		}
+		System.out.println("\n");
 	}
 
 	//Delete Middle of Linked List
@@ -34,7 +38,7 @@ class LinkedListExample
 	 * @param head
 	 * @return Node
 	 */
-	void Delete(Node head)
+	void deleteMiddleElementFromList(Node head)
 	{
 		// This is method only submission.
 		// You only need to complete the method.
@@ -55,11 +59,33 @@ class LinkedListExample
 		temp.next = temp.next.next;
 	}
 	/**
+	 * Remove duplicate element from an unsorted Linked List ..
+	 * http://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1/?ref=self
+	 * @param head
+	 * @return
+	 */
+	Node removeDuplicatesFromUnSortedList(Node head)
+    {
+         // Your code here
+         Node temp = head;
+         Set<Integer> set = new TreeSet<>();
+         int i=0;
+         while(temp!=null) {
+             boolean isunique = set.add(temp.data);
+             if(!isunique){
+                deleteByIndex(i);
+             } else
+                i++;
+             temp = temp.next;
+         }
+         return head;
+    }
+	/**
 	 * Remove duplicate element from sorted Linked List
 	 * http://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1/?ref=self
 	 * @param head
 	 */
-	void removeDuplicates(Node head)
+	void removeDuplicatesFromSortedList(Node head)
 	{
 		Node current = head;
 		Node next_next;
@@ -79,22 +105,44 @@ class LinkedListExample
 			current = current.next;
 		}
 	}
+	
+	public void deleteByIndex(int index) {
+        Node temp = head;
+        if(index<0) {
+        	System.out.println("Not a valid index");
+        	return;
+        }
+        if(index==0 && temp!=null) {
+        	this.head = temp.next;
+        }
+       for(int j=0;j<index-1;j++){
+    	   if(temp!=null)
+    		   temp = temp.next;
+    	   else {
+    		   System.out.println("index is more than size of list");
+    		   return;
+    	   }
+       }
+       temp.next = temp.next.next;
+	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
 		/* Start with the empty list. */
 		LinkedListExample llist = new LinkedListExample();
 
-		llist.head	 = new Node(1);
-		//Node second	 = new Node(2);
-		//Node third	 = new Node(2);
-		//Node fourth	 = new Node(4);
-		//llist.head.next = second; // Link first node with the second node
-		//second.next = third; // Link first node with the third node
-		//third.next = fourth; //Link first node with the fourth node	
+		llist.head	 = new Node(2);
+		Node second	 = new Node(2);
+		Node third	 = new Node(2);
+		Node fourth	 = new Node(1);
+		llist.head.next = second; // Link first node with the second node
+		second.next = third; // Link first node with the third node
+		third.next = fourth; //Link first node with the fourth node	
 		llist.printList();
-		llist.Delete(llist.head);
+		//llist.deleteByIndex(7);
+		//llist.deleteMiddleElementFromList(llist.head);
 		//llist.removeDuplicates(llist.head);
+		llist.removeDuplicatesFromUnSortedList(llist.head);
 		llist.printList();
 	}
 }
