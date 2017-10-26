@@ -65,21 +65,21 @@ class LinkedListExample
 	 * @return
 	 */
 	Node removeDuplicatesFromUnSortedList(Node head)
-    {
-         // Your code here
-         Node temp = head;
-         Set<Integer> set = new TreeSet<>();
-         int i=0;
-         while(temp!=null) {
-             boolean isunique = set.add(temp.data);
-             if(!isunique){
-                deleteByIndex(i);
-             } else
-                i++;
-             temp = temp.next;
-         }
-         return head;
-    }
+	{
+		// Your code here
+		Node temp = head;
+		Set<Integer> set = new TreeSet<>();
+		int i=0;
+		while(temp!=null) {
+			boolean isunique = set.add(temp.data);
+			if(!isunique){
+				deleteByIndex(i);
+			} else
+				i++;
+			temp = temp.next;
+		}
+		return head;
+	}
 	/**
 	 * Remove duplicate element from sorted Linked List
 	 * http://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1/?ref=self
@@ -102,28 +102,79 @@ class LinkedListExample
 				current.next = next_next;
 			}
 			else // advance if no deletion
-			current = current.next;
+				current = current.next;
 		}
 	}
-	
+
 	public void deleteByIndex(int index) {
-        Node temp = head;
-        if(index<0) {
-        	System.out.println("Not a valid index");
-        	return;
-        }
-        if(index==0 && temp!=null) {
-        	this.head = temp.next;
-        }
-       for(int j=0;j<index-1;j++){
-    	   if(temp!=null)
-    		   temp = temp.next;
-    	   else {
-    		   System.out.println("index is more than size of list");
-    		   return;
-    	   }
-       }
-       temp.next = temp.next.next;
+		Node temp = head;
+		if(index<0) {
+			System.out.println("Not a valid index");
+			return;
+		}
+		if(index==0 && temp!=null) {
+			this.head = temp.next;
+		}
+		for(int j=0;j<index-1;j++){
+			if(temp!=null)
+				temp = temp.next;
+			else {
+				System.out.println("index is more than size of list");
+				return;
+			}
+		}
+		temp.next = temp.next.next;
+	}
+
+	//iterative reverse of a linked list
+	public static Node reverse(Node node) {
+
+		if (node == null || node.next == null) {
+			return node;
+		}
+		Node next = null;
+		Node prev = null;
+		Node cur = node;
+		while(cur!=null ) {
+			next = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur=next;
+		}
+		return prev;
+	}
+
+	//recursive reverse of linked list
+	public static Node reverseLinkedList(Node node) {
+
+		if (node == null || node.next == null) {
+			return node;
+		}
+
+		Node remaining = reverseLinkedList(node.next);
+		node.next.next = node;
+		node.next = null;
+		return remaining;
+	}
+
+	// Find nth element from end of linked list	
+	public void nthnode(Node head, int nth) {
+		Node last;
+		Node first;
+		first = head;
+		last = head;
+		int length = 0;
+		while(last!=null ) {
+			System.out.println(last.data);
+			last = last.next;
+			length++; 
+
+		}
+		System.out.println("1lenght is" + length);
+		for(int i=0;i<length-nth;i++) {
+			first=first.next;
+		}
+		System.out.println("inside " + first.data);
 	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
