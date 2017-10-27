@@ -176,16 +176,47 @@ class LinkedListExample
 		}
 		System.out.println("inside " + first.data);
 	}
+	// Function to check if linked list has a palindrome or not
+	public void listHasAPAlindrome(Node head) {
+		Node temp1 = head;
+		Node temp2 = temp1.next;
+		while(temp2 != null) {
+			temp2 = temp2.next;
+			if(temp2 != null && temp1.data==temp2.data){
+				System.out.println("Yes its is a palindrome");
+				break;
+			}
+			temp1 = temp1.next;
+		}
+	}
+	
+	// Function to check if linked list is palindrome or not
+	public void listIsAPalindrome(Node head) {
+		Node first = head;
+		Node last = head;
+		int length = 0;
+		while(last.next != null) {
+			length++;
+			last=last.next;
+		}
+		length++;
+		for(int i=0;i<length/2;i++) {
+			if(first.data == last.data) {
+				first = first.next;
+				
+			}
+		}
+	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
 		/* Start with the empty list. */
 		LinkedListExample llist = new LinkedListExample();
 
-		llist.head	 = new Node(2);
+		llist.head	 = new Node(1);
 		Node second	 = new Node(2);
-		Node third	 = new Node(2);
-		Node fourth	 = new Node(1);
+		Node third	 = new Node(3);
+		Node fourth	 = new Node(2);
 		llist.head.next = second; // Link first node with the second node
 		second.next = third; // Link first node with the third node
 		third.next = fourth; //Link first node with the fourth node	
@@ -193,7 +224,9 @@ class LinkedListExample
 		//llist.deleteByIndex(7);
 		//llist.deleteMiddleElementFromList(llist.head);
 		//llist.removeDuplicates(llist.head);
-		llist.removeDuplicatesFromUnSortedList(llist.head);
+		//llist.removeDuplicatesFromUnSortedList(llist.head);
+		//llist.listHasAPAlindrome(llist.head);
+		llist.listIsAPalindrome(llist.head);
 		llist.printList();
 	}
 }
