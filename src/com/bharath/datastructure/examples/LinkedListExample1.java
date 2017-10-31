@@ -4,9 +4,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 // A simple Java program for traversal of a linked list
-class LinkedListExample
+class LinkedListExample1
 {
 	Node head; // head of list
+	Node head1;
 
 	/* Linked list Node. This inner class is made static so that
 	main() can access it */
@@ -17,9 +18,9 @@ class LinkedListExample
 	}
 
 	/* This function prints contents of linked list starting from head */
-	public void printList()
+	public void printList(Node head)
 	{
-		Node n = this.head;
+		Node n = head;
 		while (n != null)
 		{
 			System.out.print(n.data+" ");
@@ -189,7 +190,7 @@ class LinkedListExample
 			temp1 = temp1.next;
 		}
 	}
-	
+
 	// Function to check if linked list is palindrome or not
 	public void listIsAPalindrome(Node head) {
 		Node first = head;
@@ -203,7 +204,7 @@ class LinkedListExample
 		for(int i=0;i<length/2;i++) {
 			if(first.data == last.data) {
 				first = first.next;
-				
+
 			}
 		}
 	}
@@ -211,22 +212,31 @@ class LinkedListExample
 	public static void main(String[] args)
 	{
 		/* Start with the empty list. */
-		LinkedListExample llist = new LinkedListExample();
+		LinkedListExample1 llist = new LinkedListExample1();
 
-		llist.head	 = new Node(1);
-		Node second	 = new Node(2);
-		Node third	 = new Node(3);
+		llist.head	 = new Node(3);
+		Node second	 = new Node(4);
+		Node third	 = new Node(5);
 		Node fourth	 = new Node(2);
 		llist.head.next = second; // Link first node with the second node
 		second.next = third; // Link first node with the third node
 		third.next = fourth; //Link first node with the fourth node	
-		llist.printList();
+
+		llist.printList(llist.head);
+		/*llist.head1	 = new Node(4);
+		Node second1	 = new Node(5);
+		Node third1	 = new Node(6);
+		//Node fourth	 = new Node(2);
+		llist.head1.next = second1; // Link first node with the second node
+		second1.next = third1; // Link first node with the third node
+		llist.printList(llist.head1);
+		 */
 		//llist.deleteByIndex(7);
 		//llist.deleteMiddleElementFromList(llist.head);
 		//llist.removeDuplicates(llist.head);
 		//llist.removeDuplicatesFromUnSortedList(llist.head);
 		//llist.listHasAPAlindrome(llist.head);
-		llist.listIsAPalindrome(llist.head);
-		llist.printList();
+		//llist.listIsAPalindrome(llist.head);
+		//llist.printList();
 	}
 }
