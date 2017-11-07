@@ -70,6 +70,7 @@ public class SortingExample1 {
 				a[i] = a[i] - element;
 			}
 		}
+		
 		System.out.println(Arrays.toString(a));
 		Arrays.sort(a);
 		
