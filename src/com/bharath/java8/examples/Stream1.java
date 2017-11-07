@@ -1,8 +1,11 @@
 package com.bharath.java8.examples;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -50,5 +53,17 @@ public class Stream1 {
 		
 		//case:3- sorting the elements by passing a custom comaparator object
 		listOfStudents.stream().map(Student::getName).sorted((a,b)->-a.compareTo(b)).forEach(System.out::println);
+		
+		//case:4  Find out duplicate number between 1 to N numbers
+		 List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,8,4);
+	        Set<Integer> set = new TreeSet<>();
+	        for(Integer i : numbers) {
+	        	if(!set.add(i)) {
+	        		System.out.println("duplicate is " + i);
+	        	}
+	        }
+	        
+	        Map<Integer,Long> keyset = numbers.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+	        keyset.entrySet().stream().filter(c->c.getValue()>1).forEach(e->System.out.println("duplicate is " + e.getKey()));
 	}
 }
