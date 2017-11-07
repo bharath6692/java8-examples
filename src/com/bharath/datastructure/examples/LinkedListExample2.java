@@ -9,7 +9,7 @@ class LinkedListExample2
 {
 	Node head; // head of list
 	Node head1;
-
+	
 	/* Linked list Node. This inner class is made static so that
 	main() can access it */
 	static class Node {
@@ -239,16 +239,37 @@ class LinkedListExample2
 		}
 		this.length = count;
 	}
+	
+	Node merge(Node h1, Node h2)
+	{
+	    if (h1 == null)
+	        return h2;
+	    if (h2 == null)
+	        return h1;
+	 
+	    // start with the linked list
+	    // whose head data is the least
+	    if (h1.data < h2.data)
+	    {
+	        h1.next = merge(h1.next, h2);
+	        return h1;
+	    }
+	    else
+	    {
+	        h2.next = merge(h1, h2.next);
+	        return h2;
+	    }
+	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
 		/* Start with the empty list. */
 		LinkedListExample2 llist = new LinkedListExample2();
 
-		llist.head	 = new Node(3);
-		Node second	 = new Node(4);
+		llist.head	 = new Node(1);
+		Node second	 = new Node(3);
 		Node third	 = new Node(5);
-		Node fourth	 = new Node(2);
+		Node fourth	 = new Node(7);
 		llist.head.next = second; // Link first node with the second node
 		second.next = third; // Link first node with the third node
 		third.next = fourth; //Link first node with the fourth node	
@@ -256,22 +277,25 @@ class LinkedListExample2
 		//llist.head.next.next.next.next = llist.head;
 		llist.printList(llist.head);
 		//llist.segregateEvenOdd(llist.head);
-		llist.getLength(llist.head);
-		llist.alterList(llist.head,0);
-		llist.printList(llist.head);
+		//llist.getLength(llist.head);
+		//llist.alterList(llist.head,0);
+		//llist.printList(llist.head);
 		//llist.printInReverse(llist.head);
 /*		llist.alterElements(llist.head);
 		llist.printList(llist.head);
 */
-		/*llist.head1	 = new Node(4);
-		Node second1	 = new Node(5);
+		llist.head1	 = new Node(2);
+		Node second1	 = new Node(4);
 		Node third1	 = new Node(6);
 		//Node fourth	 = new Node(2);
 		llist.head1.next = second1; // Link first node with the second node
 		second1.next = third1; // Link first node with the third node
-		llist.printList(llist.head1);
-		 */
 		
+		llist.printList(llist.head1);
+		
+		Node h3 = llist.merge(llist.head, llist.head1);
+		
+		llist.printList(h3);
 		//llist.addTwoLists(llist.head, llist.head1);
 		
 		//llist.stream();

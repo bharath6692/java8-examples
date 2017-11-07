@@ -8,6 +8,7 @@ class LinkedListExample1
 {
 	Node head; // head of list
 	Node head1;
+	Node head_1;
 
 	/* Linked list Node. This inner class is made static so that
 	main() can access it */
@@ -208,6 +209,108 @@ class LinkedListExample1
 			}
 		}
 	}
+
+	public void swapByData(Node head) {
+		Node cur = head;
+		Node next = head;
+
+		while(cur!=null) {
+			next = cur.next;
+			if(next!=null) {
+				int temp = next.data;
+				next.data = cur.data ;
+				cur.data = temp;
+				next = next.next;
+			}
+			cur = next;
+		}
+	}
+
+	public void swapTwoElements(int x, int y) {
+		// Nothing to do if x and y are same
+		if (x == y) return;
+		// Search for x (keep track of prevX and CurrX)
+		Node prevX = null, currX = head;
+		while (currX != null && currX.data != x)
+		{
+			prevX = currX;
+			currX = currX.next;
+		}
+
+		// Search for y (keep track of prevY and currY)
+		Node prevY = null, currY = head;
+		while (currY != null && currY.data != y)
+		{
+			prevY = currY;
+			currY = currY.next;
+		}
+		// If either x or y is not present, nothing to do
+		if (currX == null || currY == null)
+			return;
+
+		// If x is not head of linked list
+		if (prevX != null)
+			prevX.next = currY;
+		else //make y the new head
+			head = currY;
+
+		// If y is not head of linked list
+		if (prevY != null)
+			prevY.next = currX;
+		else // make x the new head
+			head = currX;
+
+		// Swap next pointers
+		Node temp = currX.next;
+		currX.next = currY.next;
+		currY.next = temp;
+	}
+	public void swap(Node head) {
+		Node cur = head;
+		Node next = head;
+		while(cur!=null) {
+			next = cur.next;
+			cur.next = next.next;
+			next.next = cur;
+			next = cur.next;
+			cur = next;
+		}
+	}
+	void swapEvenOdd(Node head) {
+		Node temp = head;
+		Node prev = null;
+		while(temp.next!=null) {
+			if(temp.data%2==0) {
+				prev = temp;
+				temp = temp.next;
+			}else {
+				append(new Node(temp.data));
+				if(prev==null){
+					prev = this.head;
+					this.head = temp.next;
+					temp = temp.next;
+				}else {
+					temp = temp.next;
+					prev.next = temp.next;
+				}
+
+			}
+		}
+	}
+	
+	void append(Node node) {
+				Node temp = head_1;
+				if(temp == null) {
+					head_1 = node;
+					System.out.println("hi");
+					return;
+				} else {
+					while(temp.next!=null) {
+						temp = temp.next;
+					} 
+					temp.next = node;
+				}
+		 	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
@@ -238,5 +341,10 @@ class LinkedListExample1
 		//llist.listHasAPAlindrome(llist.head);
 		//llist.listIsAPalindrome(llist.head);
 		//llist.printList();
+		
+		//llist.removeDuplicatesFromUnSortedList(llist.head);
+		//llist.swapByData(llist.head);
+		//llist.printList();
+		//llist.swapEvenOdd(llist.head);
 	}
 }
