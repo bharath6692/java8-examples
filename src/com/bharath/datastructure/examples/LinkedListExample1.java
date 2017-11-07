@@ -192,24 +192,6 @@ class LinkedListExample1
 		}
 	}
 
-	// Function to check if linked list is palindrome or not
-	public void listIsAPalindrome(Node head) {
-		Node first = head;
-		Node last = head;
-		int length = 0;
-		while(last.next != null) {
-			length++;
-			last=last.next;
-		}
-		length++;
-		for(int i=0;i<length/2;i++) {
-			if(first.data == last.data) {
-				first = first.next;
-
-			}
-		}
-	}
-
 	public void swapByData(Node head) {
 		Node cur = head;
 		Node next = head;
@@ -339,7 +321,6 @@ class LinkedListExample1
 		//llist.removeDuplicates(llist.head);
 		//llist.removeDuplicatesFromUnSortedList(llist.head);
 		//llist.listHasAPAlindrome(llist.head);
-		//llist.listIsAPalindrome(llist.head);
 		//llist.printList();
 		
 		//llist.removeDuplicatesFromUnSortedList(llist.head);
