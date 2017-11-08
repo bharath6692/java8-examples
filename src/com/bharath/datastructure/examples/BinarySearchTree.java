@@ -183,19 +183,23 @@ public class BinarySearchTree {
 	
 	
 	/**
-	 * kth largest element in BST
+	 * kth largest element or K largest elements in BST
 	 * @param args
 	 */
 	int count = 0;
-	void print(Node1 root, int k)
+	void KthElement(Node1 root, int k)
 	{
 	    if (root != null && count <= k)
 	    {
-	        print(root.right, k);
+	    	KthElement(root.right, k);
 	        count++;
+	        //Kth largest element
 	        if (count == k)
 	          System.out.println("the " + k +"th largest element is " + root.data);
-	       print(root.left, k);
+	        ////K largest elements
+	        /*if(count <= k)
+	        	System.out.println("the " + k +"th largest element is " + root.data);*/
+	        KthElement(root.left, k);
 	    }
 	}
 	public static void main(String[] args) {
@@ -210,12 +214,12 @@ public class BinarySearchTree {
 		bst.insert(60);
 		bst.insert(80);*/
 		
-		root 			= new Node1(4);
+		/*root 			= new Node1(4);
 		root.left       = new Node1(2);
 		root.right      = new Node1(5);
 		root.left.left  = new Node1(1);
 		root.left.right = new Node1(3); 
-
+*/
 		//bst.inOrder(root);
 		
 		
@@ -271,7 +275,15 @@ public class BinarySearchTree {
 		root.left.left  = new Node1(1);
 		root.left.right = new Node1(3); 
 		bst.inOrder(root);
-		bst.print(root, 1);*/
+		bst.KthElement(root, 1);*/
 		
+		bst.insert(1);
+		bst.insert(23);
+		bst.insert(12);
+		bst.insert(9);
+		bst.insert(30);
+		bst.insert(2);
+		bst.insert(50);
+		bst.KthElement(root, 3);
 	}
 }
