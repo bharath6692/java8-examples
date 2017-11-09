@@ -295,14 +295,14 @@ class LinkedListExample1
 		}
 	}
 	//reversing a linked list ,my own way
-	void revert(Node root, Node temp) {
+	void revert(Node root, Node prev) {
 		if (root!=null)
 		{
 			revert(root.next,root);
-			root.next = temp;
+			root.next = prev;
 			
 		}else {
-			head = temp;
+			head = prev;
 		}
 	}
 	/* method to create a simple linked list with 3 nodes*/
