@@ -106,11 +106,33 @@ class LinkedListExample2
 		}
 	}
 	void printInReverse(Node head) {
-		if(head==null)
+		/*if(head==null)
 			return;
 		printInReverse(head.next);
-		System.out.print(head.data + " ");
+		System.out.print(head.data + " ");*/
+
+		if(head!=null) {
+			printInReverse(head.next);
+			System.out.print(head.data + " ");
+		}
 	}
+
+	// Function to check if linked list is palindrome or not
+	Node left;
+	boolean isPalindrome(Node right) {
+		left = head;
+		if(right != null) {
+			boolean isp = isPalindrome(right.next);
+			if(!isp)
+				return false;
+			System.out.print(left.data + " " + right.data);
+			if(left.data != right.data )
+				return false;
+			left = left.next;
+		}
+		return true;
+	}
+	
 	//http://practice.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream/0
 	/**
 	 * Given an input stream of n characters consisting only of small case alphabets the task is to find the first non repeating character each time a character is inserted to the stream.
@@ -267,24 +289,26 @@ class LinkedListExample2
 		LinkedListExample2 llist = new LinkedListExample2();
 
 		llist.head	 = new Node(1);
-		Node second	 = new Node(3);
-		Node third	 = new Node(5);
-		Node fourth	 = new Node(7);
+		Node second	 = new Node(2);
+		Node third	 = new Node(2);
+		Node fourth	 = new Node(1);
 		llist.head.next = second; // Link first node with the second node
 		second.next = third; // Link first node with the third node
 		third.next = fourth; //Link first node with the fourth node	
 		//below line is for creating loop in list
 		//llist.head.next.next.next.next = llist.head;
 		llist.printList(llist.head);
+		llist.printInReverse(llist.head);
 		//llist.segregateEvenOdd(llist.head);
 		//llist.getLength(llist.head);
 		//llist.alterList(llist.head,0);
 		//llist.printList(llist.head);
 		//llist.printInReverse(llist.head);
+		System.out.println(llist.isPalindrome(llist.head));
 /*		llist.alterElements(llist.head);
 		llist.printList(llist.head);
 */
-		llist.head1	 = new Node(2);
+		/*llist.head1	 = new Node(2);
 		Node second1	 = new Node(4);
 		Node third1	 = new Node(6);
 		//Node fourth	 = new Node(2);
@@ -296,7 +320,7 @@ class LinkedListExample2
 		Node h3 = llist.merge(llist.head, llist.head1);
 		
 		llist.printList(h3);
-		//llist.addTwoLists(llist.head, llist.head1);
+		*///llist.addTwoLists(llist.head, llist.head1);
 		
 		//llist.stream();
 	}

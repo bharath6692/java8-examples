@@ -159,6 +159,7 @@ class LinkedListExample1
 		return remaining;
 	}
 
+
 	// Find nth element from end of linked list	
 	public void nthnode(Node head, int nth) {
 		Node last;
@@ -189,24 +190,6 @@ class LinkedListExample1
 				break;
 			}
 			temp1 = temp1.next;
-		}
-	}
-
-	// Function to check if linked list is palindrome or not
-	public void listIsAPalindrome(Node head) {
-		Node first = head;
-		Node last = head;
-		int length = 0;
-		while(last.next != null) {
-			length++;
-			last=last.next;
-		}
-		length++;
-		for(int i=0;i<length/2;i++) {
-			if(first.data == last.data) {
-				first = first.next;
-
-			}
 		}
 	}
 
@@ -297,20 +280,31 @@ class LinkedListExample1
 			}
 		}
 	}
-	
+
 	void append(Node node) {
-				Node temp = head_1;
-				if(temp == null) {
-					head_1 = node;
-					System.out.println("hi");
-					return;
-				} else {
-					while(temp.next!=null) {
-						temp = temp.next;
-					} 
-					temp.next = node;
-				}
-		 	}
+		Node temp = head_1;
+		if(temp == null) {
+			head_1 = node;
+			System.out.println("hi");
+			return;
+		} else {
+			while(temp.next!=null) {
+				temp = temp.next;
+			} 
+			temp.next = node;
+		}
+	}
+	//reversing a linked list ,my own way
+	void revert(Node root, Node temp) {
+		if (root!=null)
+		{
+			revert(root.next,root);
+			root.next = temp;
+			
+		}else {
+			head = temp;
+		}
+	}
 	/* method to create a simple linked list with 3 nodes*/
 	public static void main(String[] args)
 	{
@@ -326,6 +320,8 @@ class LinkedListExample1
 		third.next = fourth; //Link first node with the fourth node	
 
 		llist.printList(llist.head);
+		llist.revert(llist.head, null);
+		llist.printList(llist.head);
 		/*llist.head1	 = new Node(4);
 		Node second1	 = new Node(5);
 		Node third1	 = new Node(6);
@@ -339,9 +335,8 @@ class LinkedListExample1
 		//llist.removeDuplicates(llist.head);
 		//llist.removeDuplicatesFromUnSortedList(llist.head);
 		//llist.listHasAPAlindrome(llist.head);
-		//llist.listIsAPalindrome(llist.head);
 		//llist.printList();
-		
+
 		//llist.removeDuplicatesFromUnSortedList(llist.head);
 		//llist.swapByData(llist.head);
 		//llist.printList();
