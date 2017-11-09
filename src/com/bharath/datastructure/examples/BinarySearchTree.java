@@ -187,31 +187,25 @@ public class BinarySearchTree {
 	 * @param args
 	 */
 	int count = 0;
-<<<<<<< HEAD
 	void printKthLargest(Node1 root, int k)
 	{
 	    if (root != null && count <= k)
 	    {
 	    	printKthLargest(root.right, k);
-=======
-	void KthElement(Node1 root, int k)
-	{
-	    if (root != null && count <= k)
-	    {
-	    	KthElement(root.right, k);
->>>>>>> 60cf12442280e9c1b8cba9ad248ba68ffe828c11
 	        count++;
 	        //Kth largest element
 	        if (count == k)
 	          System.out.println("the " + k +"th largest element is " + root.data);
-<<<<<<< HEAD
+	      //K largest elements
+	        /*if(count <= k)
+	        	System.out.println("the " + k +"th largest element is " + root.data);*/
 	        printKthLargest(root.left, k);
 	    }
 	}
 	
 
 	/**
-	 * kth smallest element in BST
+	 * kth smallest element or K smallest elements in BST
 	 * @param args
 	 */
 	void printKthSmallest(Node1 root, int k)
@@ -221,14 +215,11 @@ public class BinarySearchTree {
 	    	printKthSmallest(root.left, k);
 	        count++;
 	        if (count == k)
-	          System.out.println("the " + k +"th largest element is " + root.data);
-	        printKthSmallest(root.right, k);
-=======
-	        ////K largest elements
+	          System.out.println("the " + k +"th smallest element is " + root.data);
+	        //K smallest elements
 	        /*if(count <= k)
-	        	System.out.println("the " + k +"th largest element is " + root.data);*/
-	        KthElement(root.left, k);
->>>>>>> 60cf12442280e9c1b8cba9ad248ba68ffe828c11
+	        	System.out.println("the " + k +"th smallest element is " + root.data);*/
+	        printKthSmallest(root.right, k);
 	    }
 	}
 	public static void main(String[] args) {
@@ -304,15 +295,11 @@ public class BinarySearchTree {
 		root.left.left  = new Node1(1);
 		root.left.right = new Node1(3); 
 		bst.inOrder(root);
-<<<<<<< HEAD
 		bst.printKthLargest(root, 1);*/
 		
 		//kth smallest element in BST
 		//bst.printKthSmallest(root, 2);
-=======
-		bst.KthElement(root, 1);*/
->>>>>>> 60cf12442280e9c1b8cba9ad248ba68ffe828c11
-		
+		//bst.printKthSmallest(root, 1);		
 		bst.insert(1);
 		bst.insert(23);
 		bst.insert(12);
@@ -320,6 +307,6 @@ public class BinarySearchTree {
 		bst.insert(30);
 		bst.insert(2);
 		bst.insert(50);
-		bst.KthElement(root, 3);
+		bst.printKthSmallest(root, 1);
 	}
 }
