@@ -187,15 +187,32 @@ public class BinarySearchTree {
 	 * @param args
 	 */
 	int count = 0;
-	void print(Node1 root, int k)
+	void printKthLargest(Node1 root, int k)
 	{
 	    if (root != null && count <= k)
 	    {
-	        print(root.right, k);
+	    	printKthLargest(root.right, k);
 	        count++;
 	        if (count == k)
 	          System.out.println("the " + k +"th largest element is " + root.data);
-	       print(root.left, k);
+	        printKthLargest(root.left, k);
+	    }
+	}
+	
+
+	/**
+	 * kth smallest element in BST
+	 * @param args
+	 */
+	void printKthSmallest(Node1 root, int k)
+	{
+	    if (root != null && count <= k)
+	    {
+	    	printKthSmallest(root.left, k);
+	        count++;
+	        if (count == k)
+	          System.out.println("the " + k +"th largest element is " + root.data);
+	        printKthSmallest(root.right, k);
 	    }
 	}
 	public static void main(String[] args) {
@@ -271,7 +288,10 @@ public class BinarySearchTree {
 		root.left.left  = new Node1(1);
 		root.left.right = new Node1(3); 
 		bst.inOrder(root);
-		bst.print(root, 1);*/
+		bst.printKthLargest(root, 1);*/
+		
+		//kth smallest element in BST
+		//bst.printKthSmallest(root, 2);
 		
 	}
 }
